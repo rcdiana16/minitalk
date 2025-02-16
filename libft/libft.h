@@ -6,18 +6,17 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 21:25:25 by diana             #+#    #+#             */
-/*   Updated: 2025/02/03 20:40:17 by diana            ###   ########.fr       */
+/*   Updated: 2025/02/16 15:30:48 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-#endif
-
 # ifndef BUFFER_SIZE
-# define BUFFER_SIZE 5
+#  define BUFFER_SIZE 5
 
+# endif
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdarg.h>
