@@ -6,18 +6,17 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 16:52:28 by diana             #+#    #+#             */
-/*   Updated: 2025/02/16 12:54:55 by diana            ###   ########.fr       */
+/*   Updated: 2025/02/16 15:14:47 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
-//#include "minitalk.h"
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
 #include <signal.h>
 
-int	ft_recursive_power(int nb, int power)
+int	calculate_power(int nb, int power)
 {
 	int	res;
 
@@ -27,12 +26,12 @@ int	ft_recursive_power(int nb, int power)
 		return (0);
 	else
 	{
-		res = nb * ft_recursive_power(nb, power - 1);
+		res = nb * calculate_power(nb, power - 1);
 		return (res);
 	}
 }
 
-char	*letter_to_string(char const *s1, char const letter)
+char	*character_to_str(char const *s1, char const character)
 {
 	int		i;
 	int		j;
@@ -46,7 +45,7 @@ char	*letter_to_string(char const *s1, char const letter)
 	while (s1[i])
 		tab[j++] = s1[i++];
 	i = 0;
-	tab[j++] = letter;
+	tab[j++] = character;
 	tab[j] = 0;
 	free ((void *)(s1));
 	return (tab);
@@ -63,11 +62,11 @@ void	signal_handler(int signum)
 	if (signum == SIGUSR1)
 		result = result + 0;
 	else if (signum == SIGUSR2)
-		result = result + (1 * ft_recursive_power(2, 7 - counter));
+		result = result + (1 * calculate_power(2, 7 - counter));
 	counter++;
 	if (counter == 8)
 	{
-		final = letter_to_string(final, result);
+		final = character_to_str(final, result);
 		if (result == '\0')
 		{
 			ft_printf("%s\n", final);
