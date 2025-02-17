@@ -6,7 +6,7 @@
 /*   By: diana <diana@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 16:52:28 by diana             #+#    #+#             */
-/*   Updated: 2025/02/16 15:26:20 by diana            ###   ########.fr       */
+/*   Updated: 2025/02/17 17:52:17 by diana            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,18 @@ void	signal_handler(int signum)
 	}
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	struct sigaction	signal_received;
-
-	ft_printf("Server's PID: %d\n", getpid());
+	(void)argv;
+	if(argc != 1)
+	{
+		ft_printf("Error.Just pust ./server nothing else\n");
+		exit (0);
+	}
+	else
+		ft_printf("Server's PID: %d\n", getpid());
+	
 	signal_received.sa_handler = signal_handler;
 	signal_received.sa_flags = 0;
 	sigaction(SIGUSR1, &signal_received, NULL);
